@@ -102,7 +102,7 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     
-    code = 'int main() {int a,b;a=b; print a;}'
+    code = 'int main() {int a;a=30; print a;}'
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
 

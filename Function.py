@@ -16,4 +16,7 @@ class Function:
 	def getLocalSymbolTable(self):
 		return self.localSymbolTable
 	def print(self):
-		print(f'DataType: {self.returnType}, Name: {self.name}')
+		print(f'Procedure:{self.name}, ReturnType:{self.returnType}')
+		# print(self.setStatementsAstList)
+		for sal in self.statementsAstList:
+			sal.print()

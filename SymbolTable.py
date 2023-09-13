@@ -10,7 +10,8 @@ class SymbolTableEntry:
 	def getDataType(self):
 		return self.datatype
 	def print(self):
-		print(f"Variable Name: {self.name} , DataType : {self.datatype}")
+		# print(f"Variable Name: {self.name} , DataType : {self.datatype}")
+		print(f"Name:{self.name} _")
 
 
 class SymbolTable:

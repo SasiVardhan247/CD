@@ -18,7 +18,7 @@ class NumberAst(AST):
 	def __init__(self, number):
 		self.value = number
 	def print(self):
-		print("  ",self.value)
+		print("Num:",self.value)
 	def getDataType(self):
 		return type(self.value)
 
@@ -27,7 +27,7 @@ class NameAst(AST):
 	def __init__(self, symbolEntry):
 		self.symbolEntry = symbolEntry
 	def print(self):
-		symbolEntry.print()
+		self.symbolEntry.print()
 	def getDataType(self):
 		return symbolEntry.getDataType()
 
@@ -43,18 +43,27 @@ class AssignAst(AST):
 			return False
 	def print(self):
 		print("AssignAST:")
-		print("Left:")
+		print("LHS(",end='')
 		self.left.print()
-		print("Right:")
+		print(")")
+		print("RHS(",end='')
 		self.right.print()
+		print(")")
+		
 
 class PrintAst(AST):
 	def __init__(self,symbolEntry):
 		self.symbolEntry= symbolEntry
 	def print(self):
 		print("PrintAST:")
-		self.symbolEntry.printSymbolTable()
+		self.symbolEntry.print()
 
 
+class ReturnAst(AST):
+	def __init__(self,rast):
+		self.rast=rast
+	def print(self):
+		print("Return ",end='')
+		self.rast.print()
 
 

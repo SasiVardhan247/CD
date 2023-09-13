@@ -2,7 +2,7 @@ from sly import Parser
 from lexer import CTokenLexer
 from Program import Program
 from Function import Function
-from Ast import AST,AssignAst, NameAst, NumberAst,PrintAst
+from Ast import AST,AssignAst, NameAst, NumberAst,PrintAst,ReturnAst
 from SymbolTable import SymbolTable,SymbolTableEntry
 
 gst = SymbolTable()
@@ -24,11 +24,12 @@ class CTokenParser(Parser):
         print("Accepted");
         return pr
 
-    @_('return_type identifier "(" ")" "{" local_var_decl statements "}"')
+    @_('return_type identifier "(" ")" "{" local_var_decl statements return_stmt "}"')
     def main_func(self, p):
         func = Function(p.return_type,p.identifier)
-        # print(p.statements)
+        p.statements.append(p.return_stmt)
         func.setStatementsAstList(p.statements)
+        func.setLocalSymbolTable(gst)
         return func
     
     @_('INT')
@@ -75,7 +76,8 @@ class CTokenParser(Parser):
 
     @_('type identifier ";"')
     def decl(self,p):
-        gst.addSymbol(SymbolTableEntry(p.type,p.identifier))
+        gst.addSymbol(SymbolTableEntry(p.identifier,p.type))
+        # print(gst.nameInSymbolTable(p.identifier))
         return gst.nameInSymbolTable(p.identifier)
     
     @_('INT')
@@ -91,6 +93,10 @@ class CTokenParser(Parser):
     def constant(self, p):
         return p[0]
 
+    @_('RETURN NUMBER ";"')
+    def return_stmt(self,p):
+        return ReturnAst(NumberAst(p[1]))
+
     def error(self, p):
         self.valid = False
         if p is None:
@@ -102,12 +108,12 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     
-    code = 'int main() {int a;a=30; print a;}'
+    code = 'int main() {int a;a=30; print a; return 0;}'
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
 
-    if parser.valid:
-        result.print()
-        print("The code is Valid") 
-    else:
-        print("Code is not Valid")
+    result.print()
+    # if parser.valid:
+    #     print("The code is Valid") 
+    # else:
+    #     print("Code is not Valid")

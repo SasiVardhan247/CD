@@ -21,7 +21,7 @@ class CTokenParser(Parser):
     def program(self,p):
         pr=Program()
         pr.addFunctionDetails(p[0].name,p[0])
-        print("Accepted");
+        print("Code Accepted");
         return pr
 
     @_('return_type identifier "(" ")" "{" local_var_decl statements return_stmt "}"')

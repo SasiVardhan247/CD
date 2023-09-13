@@ -6,6 +6,7 @@ class Program:
 		self.functions[name] = function
 
 	def print(self):
+		print("program:")
 		for funname, function in self.functions.items():
 			function.print()
 

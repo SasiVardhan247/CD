@@ -42,11 +42,11 @@ class AssignAst(AST):
 		else:
 			return False
 	def print(self):
-		print("AssignAST:")
-		print("LHS(",end='')
+		print("    Asgn:")
+		print("      LHS ( ",end='')
 		self.left.print()
 		print(")")
-		print("RHS(",end='')
+		print("      RHS ( ",end='')
 		self.right.print()
 		print(")")
 		
@@ -55,15 +55,16 @@ class PrintAst(AST):
 	def __init__(self,symbolEntry):
 		self.symbolEntry= symbolEntry
 	def print(self):
-		print("PrintAST:")
+		print("    Print:")
+		print("      (",end="")
 		self.symbolEntry.print()
-
+		print(")")
 
 class ReturnAst(AST):
 	def __init__(self,rast):
 		self.rast=rast
 	def print(self):
-		print("Return ",end='')
+		print("    Return ",end='')
 		self.rast.print()
 
 

@@ -13,12 +13,6 @@ class CTokenLexer(Lexer):
     
     def __init__(self):
         self.lineno = 1
-        
-    # def ID(self, t):
-    #     keywords = {'int', 'print'}  # Reserved keywords
-    #     if t.value in keywords:
-    #         t.type = t.value.upper()  # Convert to uppercase for keyword tokens
-    #     return t
 
     def newline(self, t):
         r'\n+'

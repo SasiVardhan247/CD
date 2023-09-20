@@ -1,15 +1,16 @@
 from sly import Lexer
 
 class CTokenLexer(Lexer):
-    tokens = {INT, ID, PRINT, NUMBER,RETURN}
+    tokens = {INT, ID, PRINT, NUMBER}
     literals={'+','*','-','/','=','(',')',';','{','}',','}
     ignore = ' \t'
     
     INT = r'int'
     PRINT= r'print'
-    RETURN= r'return'
+    # RETURN= r'return'
     ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
     NUMBER = r'\d+'
+    ignore_comment = r'\#.*'
     
     def __init__(self):
         self.lineno = 1

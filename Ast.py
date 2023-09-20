@@ -19,7 +19,7 @@ class NumberAst(AST):
 	def __init__(self, number):
 		self.value = number
 	def print(self):
-		print("Num:",self.value)
+		print("Num:",self.value,end="")
 	def getDataType(self):
 		return type(self.value)
 

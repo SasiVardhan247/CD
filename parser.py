@@ -24,10 +24,10 @@ class CTokenParser(Parser):
         print("Code Accepted");
         return pr
 
-    @_('return_type identifier "(" ")" "{" local_var_decl statements return_stmt "}"')
+    @_('return_type identifier "(" ")" "{" local_var_decl statements "}"')
     def main_func(self, p):
         func = Function(p.return_type,p.identifier)
-        p.statements.append(p.return_stmt)
+        # p.statements.append(p.return_stmt)
         func.setStatementsAstList(p.statements)
         func.setLocalSymbolTable(gst)
         return func
@@ -70,15 +70,24 @@ class CTokenParser(Parser):
     def print_stmt(self, p):
         return PrintAst(gst.nameInSymbolTable(p.identifier))
 
-    @_('decl local_var_decl',' ')
+    @_('type decl ";"')
     def local_var_decl(self,p):
-        pass
+        for val in p.decl:
+            gst.addSymbol(SymbolTableEntry(val,p.type))
 
-    @_('type identifier ";"')
+    @_('identifier "," decl')
     def decl(self,p):
-        gst.addSymbol(SymbolTableEntry(p.identifier,p.type))
-        # print(gst.nameInSymbolTable(p.identifier))
-        return gst.nameInSymbolTable(p.identifier)
+        return [p.identifier] + p.decl
+
+    @_('identifier')
+    def decl(self,p):
+        return [p.identifier]
+
+    # @_('type identifier ";"')
+    # def decl(self,p):
+    #     gst.addSymbol(SymbolTableEntry(p.identifier,p.type))
+    #     # print(gst.nameInSymbolTable(p.identifier))
+    #     return gst.nameInSymbolTable(p.identifier)
     
     @_('INT')
     def type(self, p):
@@ -93,9 +102,9 @@ class CTokenParser(Parser):
     def constant(self, p):
         return p[0]
 
-    @_('RETURN NUMBER ";"')
-    def return_stmt(self,p):
-        return ReturnAst(NumberAst(p[1]))
+    # @_('RETURN NUMBER ";"')
+    # def return_stmt(self,p):
+    #     return ReturnAst(NumberAst(p[1]))
 
     def error(self, p):
         self.valid = False
@@ -108,12 +117,10 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     
-    code = 'int main() {int a;a=30; print a; return 0;}'
+    code ='int main(){int num1,num2,num3;num1=5;num2=num1;num3=3;print num1;print num2;print num3;}'
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
-
-    result.print()
-    # if parser.valid:
-    #     print("The code is Valid") 
-    # else:
-    #     print("Code is not Valid")
+    try:
+        result.print()
+    except:
+        print("Error in code")

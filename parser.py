@@ -116,9 +116,7 @@ class CTokenParser(Parser):
 if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
-    
-<<<<<<< HEAD
-    code = """int main(){
+    code = '''int main(){
     int num1,num2,num3;
     num1=5;
     num2=num1;
@@ -126,10 +124,7 @@ if __name__ == '__main__':
     print num1;
     print num2;
     print num3;
-}"""
-=======
-    code ='int main(){int num1,num2,num3;num1=5;num2=num1;num3=3;print num1;print num2;print num3;}'
->>>>>>> 802e62b671378e1f670e0eefbff100211646c3b5
+}'''
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
     try:

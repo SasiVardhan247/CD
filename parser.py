@@ -117,13 +117,9 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     code = '''int main(){
-    int num1,num2,num3;
-    num1=5;
-    num2=num1;
-    num3=3;
-    print num1;
-    print num2;
-    print num3;
+    float m;
+    m=2.5;
+    print m;
 }'''
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)

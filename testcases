@@ -3,7 +3,6 @@ int main(){
 int a;
 a=30;
 print a;
-return 0;
 }
 
 //correct testcase2
@@ -15,4 +14,56 @@ num3=3;
 print num1;
 print num2;
 print num3;
+}
+
+//correct tc3
+int main(){
+    int x,y;
+    x=5;
+    y=3;
+    print x;
+    print y;
+}
+
+//correct t4
+int main(){
+    int p,q,r;
+    p=7;
+    q=4;
+    r=2;
+    print p;
+    print q;
+    print r;
+}
+
+//correct tc5
+int main(){
+    int m,v;
+    m=5;
+    v=m;
+    print v;
+}
+
+//wrong tc1
+int main(){
+    float m;
+    m=2.5;
+    print m;
+}
+
+//wrong tc2
+int main(){
+    int a,b;
+    a=5;
+    b=a;
+    print b
+}
+
+//wrong tc3
+int main(){
+    int a,b,c;
+    b=2;
+    a=3;
+    c=a+b;
+    print c;
 }

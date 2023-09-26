@@ -65,13 +65,13 @@ class CTokenParser(Parser):
         if p is None:
             print("Syntax error at EOF")
         else:
-            print(f"Syntax error at line {p.lineno}, position {p.index}, token=`{p.type}`")
+            print(f"Syntax error token=`{p.type}`")
 
 if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     
-    code = 'int main() {int a,b,c,d,e,f;a=30;print a;}'
+    code = 'int main() {int a,b,c,d,e,f;a=30;print a}'
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
 

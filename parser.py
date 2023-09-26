@@ -1,5 +1,6 @@
 from sly import Parser
 from lexer import CTokenLexer
+# from main import parser
 from Program import Program
 from Function import Function
 from Ast import AST,AssignAst, NameAst, NumberAst,PrintAst,ReturnAst
@@ -117,15 +118,16 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     code = '''int main(){
-    int a,b,c;
-    b=2;
-    a=3;
-    c=a+b;
-    print c;
+    int x,y;
+    x=5;
+    y=3;
+    print x;
+    print y;
 }
 '''
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
+
     try:
         result.print()
     except:

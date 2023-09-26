@@ -1,5 +1,7 @@
 import argparse
-from parser import tokens
+from lexer import CTokenLexer
+from parser import CTokenParser
+
 parser = argparse.ArgumentParser()
 
 parser.usage = "tinyCC [options] file"
@@ -12,20 +14,37 @@ parser.add_argument('-compile',action='store_true',help="Compile the program and
 parser.add_argument('file',help="TinyC Program")
 args = parser.parse_args()
 
+lexer = CTokenLexer()
+parser = CTokenParser()
+
+code = '''int main(){
+int x,y;
+x=5;
+y=3;
+print x;
+print y;
+}
+'''
+tokens = lexer.tokenize(code)
+
+def __init__(self):
+	self.result=None
+
 args.compile = True  #default value
 if args.tokens:
 	tokens_file_name = args.file +".toks"
 	tokens_file = open(tokens_file_name,"w")
-	print(tokens)
-	for tok in tokens:
-		print(tok)
-		tokens_file.write(tok.type)
 	# call tokenize and print tokens into tokens_file
+	for token in tokens:
+		tokens_file.write(f"{token.type}: {token.value}\n")
 
 if args.parse:
 	# call parser, which should not create Program data structure
 	args.ast = False
 	args.compile = False
+	result = parser.parse(tokens)
+	result.print()
+
 if args.ast:
 	ast_file_name = args.file +".ast"
 	ast_file = open(ast_file_name,"w")

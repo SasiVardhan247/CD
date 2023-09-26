@@ -1,6 +1,6 @@
+import main
 from sly import Parser
 from lexer import CTokenLexer
-# from main import parser
 from Program import Program
 from Function import Function
 from Ast import AST,AssignAst, NameAst, NumberAst,PrintAst,ReturnAst
@@ -114,21 +114,21 @@ class CTokenParser(Parser):
         else:
             print(f"Syntax error token=`{p.type}`")
 
-if __name__ == '__main__':
-    lexer = CTokenLexer()
-    parser = CTokenParser()
-    code = '''int main(){
-    int x,y;
-    x=5;
-    y=3;
-    print x;
-    print y;
-}
-'''
-    tokens = lexer.tokenize(code)
-    result = parser.parse(tokens)
-
-    try:
-        result.print()
-    except:
-        print("Error in code")
+# if __name__ == '__main__':
+# #     lexer = CTokenLexer()
+# #     parser = CTokenParser()
+# #     code = '''int main(){
+# #     int x,y;
+# #     x=5;
+# #     y=3;
+# #     print x;
+# #     print y;
+# # }
+# # '''
+# #     tokens = lexer.tokenize(code)
+# #     result = parser.parse(tokens)
+#     # try:
+#     #     result.print()
+#     # except:
+#     #     print("Error in code")
+#     pass

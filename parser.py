@@ -13,9 +13,9 @@ class CTokenParser(Parser):
     tokens = CTokenLexer.tokens
     literals=CTokenLexer.literals
 
-    def __init__(self):
-        self.valid = True
-        super().__init__()
+    # def __init__(self):
+    #     self.valid = True
+    #     super().__init__()
 
     @_('main_func')
     def program(self,p):
@@ -107,20 +107,23 @@ class CTokenParser(Parser):
     #     return ReturnAst(NumberAst(p[1]))
 
     def error(self, p):
-        self.valid = False
+        # self.valid = False
         if p is None:
             print("Syntax error at EOF")
         else:
-            print(f"Syntax error at line {p.lineno}, position {p.index}, token=`{p.type}`")
+            print(f"Syntax error token=`{p.type}`")
 
 if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     code = '''int main(){
-    float m;
-    m=2.5;
-    print m;
-}'''
+    int a,b,c;
+    b=2;
+    a=3;
+    c=a+b;
+    print c;
+}
+'''
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
     try:

@@ -22,7 +22,7 @@ class CTokenParser(Parser):
     def program(self,p):
         pr=Program()
         pr.addFunctionDetails(p[0].name,p[0])
-        print("Code Accepted");
+        #print("Code Accepted");
         return pr
 
     @_('return_type identifier "(" ")" "{" local_var_decl statements "}"')
@@ -113,22 +113,3 @@ class CTokenParser(Parser):
             print("Syntax error at EOF")
         else:
             print(f"Syntax error token=`{p.type}`")
-
-# if __name__ == '__main__':
-# #     lexer = CTokenLexer()
-# #     parser = CTokenParser()
-# #     code = '''int main(){
-# #     int x,y;
-# #     x=5;
-# #     y=3;
-# #     print x;
-# #     print y;
-# # }
-# # '''
-# #     tokens = lexer.tokenize(code)
-# #     result = parser.parse(tokens)
-#     # try:
-#     #     result.print()
-#     # except:
-#     #     print("Error in code")
-#     pass

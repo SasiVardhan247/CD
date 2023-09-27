@@ -43,11 +43,17 @@ if args.parse:
 	args.ast = False
 	args.compile = False
 	result = parser.parse(tokens)
-	result.print()
-
+	#result.print()
+	if result:
+		print("code accepted")
+	else:
+		print("errors in code code not accepted")
 if args.ast:
 	ast_file_name = args.file +".ast"
 	ast_file = open(ast_file_name,"w")
+	result = parser.parse(tokens)
+	for i in result:
+		ast_file.write(i)
 	# call parser, creates Program object
 	# call program.print(), which should print ast
 if args.compile:

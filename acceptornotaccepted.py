@@ -71,12 +71,19 @@ if __name__ == '__main__':
     lexer = CTokenLexer()
     parser = CTokenParser()
     
-    code = 'int main() {int a,b,c,d,e,f;a=30;print a}'
+    code = '''int main(){
+    int m,v;
+    m=5;
+    v=m;
+    print v;
+}
+
+'''
     tokens = lexer.tokenize(code)
     result = parser.parse(tokens)
 
     if parser.valid:
-        print(result)
+        #print(result)
         print("The code is Valid") 
     else:
         print("Code is not Valid")

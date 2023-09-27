@@ -1,0 +1,14 @@
+Program :
+  Procedure:main, ReturnType:int
+      ( Name:r _ )
+      ( Name:q _ )
+      ( Name:p _ )
+    Asgn:
+      LHS ( Name:r _ )
+      RHS ( Num: 2 )
+    Asgn:
+      LHS ( Name:q _ )
+      RHS ( Num: 4 )
+    Asgn:
+      LHS ( Name:p _ )
+      RHS ( Num: 7 )

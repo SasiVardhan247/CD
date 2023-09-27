@@ -1,0 +1,6 @@
+int main(){
+    int m,v;
+    m=5;
+    v=m;
+    print v;
+}

@@ -1,0 +1,14 @@
+Program :
+  Procedure:main, ReturnType:int
+      ( Name:num3 _ )
+      ( Name:num2 _ )
+      ( Name:num1 _ )
+    Asgn:
+      LHS ( Name:num3 _ )
+      RHS ( Num: 3 )
+    Asgn:
+      LHS ( Name:num2 _ )
+      RHS ( Name:num1 _ )
+    Asgn:
+      LHS ( Name:num1 _ )
+      RHS ( Num: 5 )

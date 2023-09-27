@@ -19,7 +19,10 @@ class NumberAst(AST):
 	def __init__(self, number):
 		self.value = number
 	def print(self):
-		print("Num:",self.value,end="")
+		ls=f"Num: {self.value}"
+		# print("Num:",self.value,end="")
+		return ls
+
 	def getDataType(self):
 		return type(self.value)
 
@@ -28,7 +31,9 @@ class NameAst(AST):
 	def __init__(self, symbolEntry):
 		self.symbolEntry = symbolEntry
 	def print(self):
-		self.symbolEntry.print()
+		ls=f"{self.symbolEntry.print()}"
+		# self.symbolEntry.print()
+		return ls
 	def getDataType(self):
 		return symbolEntry.getDataType()
 
@@ -43,29 +48,41 @@ class AssignAst(AST):
 		else:
 			return False
 	def print(self):
-		print("    Asgn:")
-		print("      LHS ( ",end='')
-		self.left.print()
-		print(")")
-		print("      RHS ( ",end='')
-		self.right.print()
-		print(")")
+		ls=list()
+		ls.append("    Asgn:")
+		# print("    Asgn:")
+		ls.append(f"      LHS ( {self.left.print()} )")
+		# print("      LHS ( ",end='')
+		# self.left.print()
+		# print(")")
+		ls.append(f"      RHS ( {self.right.print()} )")
+		# print("      RHS ( ",end='')
+		# self.right.print()
+		# print(")")
+		return ls
 		
 
 class PrintAst(AST):
 	def __init__(self,symbolEntry):
 		self.symbolEntry= symbolEntry
 	def print(self):
-		print("    Print:")
-		print("      (",end="")
-		self.symbolEntry.print()
-		print(")")
+		ls=list()
+		ls.append(f"      ( {self.symbolEntry.print()} )")
+		# print("    Print:")
+		# print("      (",end="")
+		# self.symbolEntry.print()
+		# print(")")
+		return ls
 
 class ReturnAst(AST):
 	def __init__(self,rast):
 		self.rast=rast
 	def print(self):
-		print("    Return ",end='')
-		self.rast.print()
+		ls=list()
+		ls.append("    Return ")
+		ls.append(f"{self.rast.print()}")
+		# print("    Return ",end='')
+		# self.rast.print()
+		return ls
 
 

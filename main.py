@@ -29,8 +29,8 @@ f=open(args.file)
 code=f.read()
 tokens = lexer.tokenize(code)
 
-def __init__(self):
-	self.result=None
+# def __init__(self):
+# 	self.result=None
 
 args.compile = True  #default value
 if args.tokens:
@@ -44,18 +44,32 @@ if args.parse:
 	# call parser, which should not create Program data structure
 	args.ast = False
 	args.compile = False
-	result = parser.parse(tokens)
 	#result.print()
+	result = parser.parse(tokens)
 	if result:
 		print("code accepted")
 	else:
-		print("errors in code code not accepted")
+		print("errors in code!!! code not accepted")
+
 if args.ast:
 	ast_file_name = args.file +".ast"
 	ast_file = open(ast_file_name,"w")
 	result = parser.parse(tokens)
-	for i in result:
-		ast_file.write(i)
+	res=result.print()
+	def flatten_nested_code(nested_code, flat_code=None):
+		if flat_code is None:
+			flat_code = []
+		
+		for item in nested_code:
+			if isinstance(item, list):
+				flatten_nested_code(item, flat_code)
+			else:
+				flat_code.append(item)
+		return flat_code
+	flat_code = flatten_nested_code(res)
+	# print(flat_code)
+	for fc in flat_code:
+		ast_file.write(f"{fc}\n")
 	# call parser, creates Program object
 	# call program.print(), which should print ast
 if args.compile:

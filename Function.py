@@ -16,7 +16,10 @@ class Function:
 	def getLocalSymbolTable(self):
 		return self.localSymbolTable
 	def print(self):
-		print(f'  Procedure:{self.name}, ReturnType:{self.returnType}')
+		# print(f'  Procedure:{self.name}, ReturnType:{self.returnType}')
+		ls=list()
+		ls.append(f'  Procedure:{self.name}, ReturnType:{self.returnType}')
 		# print(self.setStatementsAstList)
 		for sal in self.statementsAstList:
-			sal.print()
+			ls.append(sal.print())
+		return ls

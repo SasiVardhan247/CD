@@ -68,3 +68,8 @@ int main(){
     c=a+b;
     print c;
 }
+
+////wrong tc4
+int main(){
+int num;
+num=4;

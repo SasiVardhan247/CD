@@ -11,7 +11,9 @@ class SymbolTableEntry:
 		return self.datatype
 	def print(self):
 		# print(f"Variable Name: {self.name} , DataType : {self.datatype}")
-		print(f"Name:{self.name} _",end="")
+		# print(f"Name:{self.name} _",end="")
+		st = f"Name:{self.name} _"
+		return st
 
 
 class SymbolTable:
@@ -25,8 +27,11 @@ class SymbolTable:
 				return ste
 		return None
 	def printSymbolTable(self):
-		print("Symbol Table:")
+		ls=list()
+		ls.append("Symbol Table:")
+		# print("Symbol Table:")
 		for ste in self.table:
-			ste.print()
+			ls.append(ste.print())
+		return ls
 
 

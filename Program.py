@@ -6,9 +6,12 @@ class Program:
 		self.functions[name] = function
 
 	def print(self):
-		print("program:")
+		# print("program:")
+		ls = list()
+		ls.append("Program :")
 		for funname, function in self.functions.items():
-			function.print()
+			ls.append(function.print())
+		return ls
 
 	def getMainFunction(self):
 		for funname, function in self.functions:

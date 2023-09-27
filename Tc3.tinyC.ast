@@ -1,0 +1,10 @@
+Program :
+  Procedure:main, ReturnType:int
+      ( Name:y _ )
+      ( Name:x _ )
+    Asgn:
+      LHS ( Name:y _ )
+      RHS ( Num: 3 )
+    Asgn:
+      LHS ( Name:x _ )
+      RHS ( Num: 5 )

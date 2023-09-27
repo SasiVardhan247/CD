@@ -1,0 +1,9 @@
+int main(){
+    int p,q,r;
+    p=7;
+    q=4;
+    r=2;
+    print p;
+    print q;
+    print r;
+}

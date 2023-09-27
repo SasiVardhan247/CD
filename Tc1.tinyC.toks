@@ -1,0 +1,16 @@
+INT: int
+ID: main
+(: (
+): )
+{: {
+INT: int
+ID: a
+;: ;
+ID: a
+=: =
+NUMBER: 30
+;: ;
+PRINT: print
+ID: a
+;: ;
+}: }

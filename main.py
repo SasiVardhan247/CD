@@ -17,14 +17,16 @@ args = parser.parse_args()
 lexer = CTokenLexer()
 parser = CTokenParser()
 
-code = '''int main(){
-int x,y;
-x=5;
-y=3;
-print x;
-print y;
-}
-'''
+# code = '''int main(){
+#     int a,b,c;
+#     b=2;
+#     a=3;
+#     c=a+b;
+#     print c;
+# }
+# '''
+f=open(args.file)
+code=f.read()
 tokens = lexer.tokenize(code)
 
 def __init__(self):

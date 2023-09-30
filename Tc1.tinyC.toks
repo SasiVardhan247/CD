@@ -1,16 +1,16 @@
-INT: int
-ID: main
-(: (
-): )
-{: {
-INT: int
-ID: a
-;: ;
-ID: a
-=: =
-NUMBER: 30
-;: ;
-PRINT: print
-ID: a
-;: ;
-}: }
+type=INT,value=int
+type=ID,value=main
+type=(,value=(
+type=),value=)
+type={,value={
+type=INT,value=int
+type=ID,value=a
+type=;,value=;
+type=ID,value=a
+type==,value==
+type=NUMBER,value=30
+type=;,value=;
+type=PRINT,value=print
+type=ID,value=a
+type=;,value=;
+type=},value=}

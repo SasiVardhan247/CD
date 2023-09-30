@@ -2,9 +2,9 @@ from sly import Lexer
 
 class CTokenLexer(Lexer):
     tokens = {INT, ID, PRINT, NUMBER}
-    literals={'+','*','-','/','=','(',')',';','{','}',','}
+    # literals={'+','*','-','/','=','(',')',';','{','}',','}
+    literals={'{','}',';',',','=','(',')'}
     ignore = ' \t'
-    
     INT = r'int'
     PRINT= r'print'
     # RETURN= r'return'

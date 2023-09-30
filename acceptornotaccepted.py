@@ -72,10 +72,9 @@ if __name__ == '__main__':
     parser = CTokenParser()
     
     code = '''int main(){
-    int m,v;
+    int m;
     m=5;
-    v=m;
-    print v;
+    print m;
 }
 
 '''

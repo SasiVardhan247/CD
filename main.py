@@ -16,15 +16,6 @@ args = parser.parse_args()
 
 lexer = CTokenLexer()
 parser = CTokenParser()
-
-# code = '''int main(){
-#     int a,b,c;
-#     b=2;
-#     a=3;
-#     c=a+b;
-#     print c;
-# }
-# '''
 f=open(args.file)
 code=f.read()
 tokens = lexer.tokenize(code)
@@ -38,7 +29,7 @@ if args.tokens:
 	tokens_file = open(tokens_file_name,"w")
 	# call tokenize and print tokens into tokens_file
 	for token in tokens:
-		tokens_file.write(f"{token.type}: {token.value}\n")
+		tokens_file.write(f"type={token.type},value={token.value}\n")
 
 if args.parse:
 	# call parser, which should not create Program data structure

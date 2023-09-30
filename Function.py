@@ -20,6 +20,6 @@ class Function:
 		ls=list()
 		ls.append(f'  Procedure:{self.name}, ReturnType:{self.returnType}')
 		# print(self.setStatementsAstList)
-		for sal in self.statementsAstList:
+		for sal in reversed(self.statementsAstList):
 			ls.append(sal.print())
 		return ls

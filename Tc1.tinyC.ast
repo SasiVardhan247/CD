@@ -1,6 +1,0 @@
-Program :
-  Procedure:main, ReturnType:int
-      ( Name:a _ )
-    Asgn:
-      LHS ( Name:a _ )
-      RHS ( Num: 30 )

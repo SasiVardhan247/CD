@@ -25,11 +25,14 @@ tokens = lexer.tokenize(code)
 
 args.compile = True  #default value
 if args.tokens:
-	tokens_file_name = args.file +".toks"
-	tokens_file = open(tokens_file_name,"w")
-	# call tokenize and print tokens into tokens_file
-	for token in tokens:
-		tokens_file.write(f"type={token.type},value={token.value}\n")
+	if tokens:
+		tokens_file_name = args.file +".toks"
+		tokens_file = open(tokens_file_name,"w")
+		# call tokenize and print tokens into tokens_file
+		for token in tokens:
+			tokens_file.write(f"type={token.type},value={token.value}\n")
+	else:
+		print("Invalid Code")
 
 if args.parse:
 	# call parser, which should not create Program data structure
@@ -43,24 +46,26 @@ if args.parse:
 		print("errors in code!!! code not accepted")
 
 if args.ast:
-	ast_file_name = args.file +".ast"
-	ast_file = open(ast_file_name,"w")
 	result = parser.parse(tokens)
-	res=result.print()
-	def flatten_nested_code(nested_code, flat_code=None):
-		if flat_code is None:
-			flat_code = []
-		
-		for item in nested_code:
-			if isinstance(item, list):
-				flatten_nested_code(item, flat_code)
-			else:
-				flat_code.append(item)
-		return flat_code
-	flat_code = flatten_nested_code(res)
-	# print(flat_code)
-	for fc in flat_code:
-		ast_file.write(f"{fc}\n")
+	if result:
+		ast_file_name = args.file +".ast"
+		ast_file = open(ast_file_name,"w")
+		res=result.print()
+		def flatten_nested_code(nested_code, flat_code=None):
+			if flat_code is None:
+				flat_code = []
+			
+			for item in nested_code:
+				if isinstance(item, list):
+					flatten_nested_code(item, flat_code)
+				else:
+					flat_code.append(item)
+			return flat_code
+		flat_code = flatten_nested_code(res)
+		for fc in flat_code:
+			ast_file.write(f"{fc}\n")
+	else:
+		print("errors in code!!! code not accepted")
 	# call parser, creates Program object
 	# call program.print(), which should print ast
 if args.compile:

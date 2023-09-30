@@ -67,6 +67,7 @@ class PrintAst(AST):
 		self.symbolEntry= symbolEntry
 	def print(self):
 		ls=list()
+		ls.append("    Print:")
 		ls.append(f"      ( {self.symbolEntry.print()} )")
 		# print("    Print:")
 		# print("      (",end="")

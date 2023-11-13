@@ -54,7 +54,7 @@ if args.icg:
 	result = parser.parse(tokens)
 	if result:
 		print("Intermediate Code")
-		print("opd1\topd2\tresult\topcode")
+		print("opcode\topd1\topd2\tresult")
 		result.print()
 	else:
 		print("errors in code!!! code not accepted")

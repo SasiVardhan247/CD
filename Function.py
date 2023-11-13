@@ -21,7 +21,7 @@ class Function:
 		# ls=list()
 		self.ls.append(f'  Procedure:{self.name.getSymbolName()}, ReturnType:{self.returnType}')
 		# print(self.setStatementsAstList)
-		for sal in reversed(self.statementsAstList):
+		for sal in self.statementsAstList:
 			self.recursive_iterate(sal)
 			# ls.append(sal.print())
 		return self.ls

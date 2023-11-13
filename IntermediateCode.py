@@ -24,11 +24,11 @@ class Quadruple:
 	def getopd1(self):
 		return self.opd1
 	def print(self):
-		# print(self.opd1.print())
+		print(self.opcode,end="\t")	
 		self.opd1.print()
 		if(self.opd2 != None):
 			self.opd2.print()
 		else:
 			print(self.opd2,end="\t")
 		self.result.print()
-		print(self.opcode)	
+		print()

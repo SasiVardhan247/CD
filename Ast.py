@@ -1,8 +1,8 @@
 import sys
 from enum import Enum
 from abc import ABC,ABCMeta,abstractmethod
-from SymbolTable import SymbolTable
-from SymbolTable import SymbolTableEntry
+from SymbolTable2 import *
+# from SymbolTable import *
 
 DataType = Enum('DataType',['INT','DOUBLE'])
 

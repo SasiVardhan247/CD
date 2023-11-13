@@ -1,0 +1,5 @@
+int main(){
+    double a,b,c,d;
+    a=b+c*d;
+    print a;
+}

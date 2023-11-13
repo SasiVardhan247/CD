@@ -1,6 +1,6 @@
 import argparse
-from lexer import CTokenLexer
-from parser import CTokenParser
+from lexer2 import CTokenLexer
+from parser2 import CTokenParser
 
 parser = argparse.ArgumentParser()
 

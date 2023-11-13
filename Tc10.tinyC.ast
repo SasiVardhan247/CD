@@ -1,0 +1,7 @@
+Program :
+  Procedure:main, ReturnType:int
+None
+None
+None
+    Print:
+      ( Name:a _ )

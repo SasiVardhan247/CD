@@ -42,6 +42,7 @@ if args.parse:
 	result = parser.parse(tokens)
 	if result:
 		print("code accepted")
+		result.print()
 	else:
 		print("errors in code!!! code not accepted")
 

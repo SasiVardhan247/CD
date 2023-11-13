@@ -14,7 +14,7 @@ class SymbolTableEntry:
 		# print(f"Variable Name: {self.name} , DataType : {self.datatype}")
 		# print(f"Name:{self.name} _",end="")
 		st = f"Name:{self.getSymbolName()} _"
-		print(self.getSymbolName())
+		print(self.getSymbolName(),end=" ")
 		return st
 
 

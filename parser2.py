@@ -30,7 +30,7 @@ class CTokenParser(Parser):
         # p.statements.append(p.return_stmt)
         # print(inter_list)
         # print(p.statements)
-        func.setStatementsAstList(p.statements + inter_list)
+        func.setStatementsAstList(inter_list)
         func.setLocalSymbolTable(gst)
         return func
     
@@ -74,6 +74,7 @@ class CTokenParser(Parser):
             entry = SymbolTableEntry(p[0],DataType.INT)
             gst.addSymbol(entry)
         result = Variable(entry)
+        # print(result,p[0])
         opd1 = Variable(p[2])
         opd2 = None
         q = Quadruple(opd1,opd2,result,"=")
@@ -152,11 +153,12 @@ class CTokenParser(Parser):
     
     @_('ID')
     def identifier(self, p):
-        # print(p[0])
         entry = gst.getEntryOfSymbol(p[0])
+        # print(p[0],entry)
         if(entry != None):
             return entry
         e = SymbolTableEntry(p[0],DataType.INT)
+        # print(e,p[0])
         gst.addSymbol(e)
         return e
     

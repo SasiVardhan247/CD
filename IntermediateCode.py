@@ -29,6 +29,6 @@ class Quadruple:
 		if(self.opd2 != None):
 			self.opd2.print()
 		else:
-			print(self.opd2,end=" ")
+			print(self.opd2,end="\t")
 		self.result.print()
 		print(self.opcode)	

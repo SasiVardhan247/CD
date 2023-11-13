@@ -41,7 +41,8 @@ if args.parse:
 	#result.print()
 	result = parser.parse(tokens)
 	if result:
-		print("code accepted")
+		print("code accepted\nIntermediate Code")
+		print("opd1\topd2\tresult\topcode")
 		result.print()
 	else:
 		print("errors in code!!! code not accepted")

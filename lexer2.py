@@ -10,13 +10,13 @@ class CTokenLexer(Lexer):
     # RETURN= r'return'
     ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
     NUMBER = r'\d+'
-    ignore_newline = r'\n+'
+    # ignore_newline = r'\n+'
     
     def __init__(self):
-        self.lineno = 1
-
-    def newline(self, t):
-        r'\n+'
+        self.lineno = 0
+    
+    @_(r'\n+')
+    def ignore_newline(self, t):
         self.lineno += len(t.value)
     
     def error(self, t):

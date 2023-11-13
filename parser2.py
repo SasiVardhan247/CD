@@ -48,7 +48,7 @@ class CTokenParser(Parser):
     
     @_('assignment_stmt')
     def statement(self, p):
-        pass
+        return p[0]
 
     @_('print_stmt')
     def statement(self, p):
@@ -69,7 +69,8 @@ class CTokenParser(Parser):
     @_('identifier "=" expr')
     def assignment_stmt(self, p):
         # return AssignAst(NameAst(gst.nameInSymbolTable(p[0])),NameAst(gst.nameInSymbolTable(p[2])),ln)
-        entry = gst.getEntryOfSymbol(p[0])
+        # entry = gst.getEntryOfSymbol(p[0])
+        entry=p[0]
         if(entry == None):
             entry = SymbolTableEntry(p[0],DataType.INT)
             gst.addSymbol(entry)
@@ -157,6 +158,7 @@ class CTokenParser(Parser):
         # print(p[0],entry)
         if(entry != None):
             return entry
+        # print(p[0])
         e = SymbolTableEntry(p[0],DataType.INT)
         # print(e,p[0])
         gst.addSymbol(e)
@@ -175,7 +177,7 @@ class CTokenParser(Parser):
         if p is None:
             print("Syntax error at EOF")
         else:
-            print(f"Syntax error token=`{p.type}`")
+            print(f"Syntax error at line {p.lineno-1}")
 
 # lexer = CTokenLexer()
 # parser = CTokenParser()

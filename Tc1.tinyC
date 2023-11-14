@@ -1,5 +1,5 @@
 int main(){
-int a;
-a=30;
+int a,b;
+a=a+b;
 print a;
 }

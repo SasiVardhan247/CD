@@ -1,11 +1,11 @@
-import main2
+import main
 from sly import Parser
 from lexer2 import CTokenLexer
 from Program import Program
-from Function2 import Function
-from Ast import *
+from Function import Function
+from Ast3 import *
 from SymbolTable2 import *
-from IntermediateCode import *
+# from IntermediateCode import *
 
 gst = SymbolTable()
 lxr=CTokenLexer()
@@ -29,8 +29,8 @@ class CTokenParser(Parser):
         func = Function(p.return_type,p[1])
         # p.statements.append(p.return_stmt)
         # print(inter_list)
-        # print(p.statements)
-        func.setStatementsAstList(inter_list)
+        print(p.statements)
+        func.setStatementsAstList(p.statements)
         func.setLocalSymbolTable(gst)
         return func
     
@@ -48,7 +48,8 @@ class CTokenParser(Parser):
     
     @_('assignment_stmt')
     def statement(self, p):
-        return p[0]
+        print(p[0])
+        return [p[0]]
 
     @_('print_stmt')
     def statement(self, p):
@@ -68,49 +69,18 @@ class CTokenParser(Parser):
     
     @_('identifier "=" expr')
     def assignment_stmt(self, p):
-        # return AssignAst(NameAst(gst.nameInSymbolTable(p[0])),NameAst(gst.nameInSymbolTable(p[2])),ln)
+        return AssignAst(p[0],p[2],ln)
         # entry = gst.getEntryOfSymbol(p[0])
-        entry=p[0]
-        if(entry == None):
-            entry = SymbolTableEntry(p[0],DataType.INT)
-            gst.addSymbol(entry)
-        result = Variable(entry)
-        # print(result,p[0])
-        opd1 = Variable(p[2])
-        opd2 = None
-        q = Quadruple(opd1,opd2,result,"=")
-        inter_list.append(q)
-        return inter_list
-
     @_('expr "-" expr')
     def expr(self,p):
-        e = gst.newTemp()
-        result = Variable(e)
-        opd1 = Variable(p[0])
-        opd2 = Variable(p[2])
-        q = Quadruple(opd1,opd2,result,"-")
-        inter_list.append(q)
-        return e
+        pass
 
     @_('expr "*" expr')
     def expr(self,p):
-        e = gst.newTemp()
-        result = Variable(e)
-        opd1 = Variable(p[0])
-        opd2 = Variable(p[2])
-        q = Quadruple(opd1,opd2,result,"*")
-        inter_list.append(q)
-        return e
-
+        pass
     @_('expr "+" expr')
     def expr(self,p):
-        e = gst.newTemp()
-        result = Variable(e)
-        opd1 = Variable(p[0])
-        opd2 = Variable(p[2])
-        q = Quadruple(opd1,opd2,result,"+")
-        inter_list.append(q)
-        return e
+        return PlusAst(p[0],p[2],ln)
 
     @_('"(" expr ")"')
     def expr(self,p):
@@ -162,14 +132,11 @@ class CTokenParser(Parser):
         e = SymbolTableEntry(p[0],DataType.INT)
         # print(e,p[0])
         gst.addSymbol(e)
-        return e
+        return NameAst(e)
     
     @_('NUMBER')
     def constant(self, p):
-        return p[0]
-    @_('DECIMAL')
-    def constant(self, p):
-        return p[0]
+        return NumberAst(p[0])
 
     # @_('RETURN NUMBER ";"')
     # def return_stmt(self,p):

@@ -17,9 +17,9 @@ class Function:
 	def getLocalSymbolTable(self):
 		return self.localSymbolTable
 	def print(self):
-		print(f'  Procedure:{self.name}, ReturnType:{self.returnType}')
+		# print(f'  Procedure:{self.name.getSymbolName()}, ReturnType:{self.returnType}')
 		# ls=list()
-		self.ls.append(f'  Procedure:{self.name.print()}, ReturnType:{self.returnType}')
+		self.ls.append(f'  Procedure:{self.name.getSymbolName()}, ReturnType:{self.returnType}')
 		# print(self.getStatementsAstList())
 		for sal in self.statementsAstList:
 			self.recursive_iterate(sal)
